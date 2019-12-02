@@ -22,4 +22,13 @@ export class HeroesService {
               })
             );
   }
+
+  updateHero(hero: HeroeModel){
+    const heroeTemp = {
+      ...hero
+    };
+    delete heroeTemp.id;
+
+    return this.http.put(`${ this.url }/heroes/${hero.id}.json`, heroeTemp);
+  }
 }
